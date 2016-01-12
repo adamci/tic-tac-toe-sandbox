@@ -18,6 +18,7 @@ void randRandThousandTrialTest();
 int main()
 {
 	randRandThousandTrialTest();
+	//humanVersusRandom();
 
 	return 1;
 }

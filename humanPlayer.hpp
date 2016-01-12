@@ -6,7 +6,6 @@
 #include "player.hpp"
 #include <iostream>
 #include <tuple>
-using namespace std;
 
 
 // ======================================== //

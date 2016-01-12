@@ -5,6 +5,8 @@
 
 
 #include "randomPlayer.hpp"
+using namespace std;
+
 
 tuple<int,int> randomPlayer::play(char grid[3][3])
 {

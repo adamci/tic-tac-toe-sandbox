@@ -7,7 +7,6 @@
 #include "player.hpp"
 #include <iostream>
 #include <tuple>
-using namespace std;
 
 // ======================================== //
 //      Random player class definition      //
@@ -15,5 +14,5 @@ using namespace std;
 class randomPlayer : public player
 {
 public:
-	tuple<int,int> play(char grid[3][3]);
+	std::tuple<int,int> play(char grid[3][3]);
 };

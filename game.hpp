@@ -25,6 +25,7 @@ private:
     playerTypeA *playerA;
     playerTypeB *playerB;
     bool playerAToMove;
+    char mark;
 
     friend class player;
     friend class humanPlayer;
@@ -44,6 +45,8 @@ public:
         // Pick first move randomly
         srand(time(NULL));
         playerAToMove = ((rand() % 2) == 0);
+
+        mark = 'X';
     }
 
     void reset();
@@ -70,6 +73,7 @@ void game<playerTypeA, playerTypeB>::reset()
 
     // Repick first player
     playerAToMove = ((rand() % 2) == 0);
+    mark = 'X';
 }
 
 template <class playerTypeA, class playerTypeB>
@@ -77,15 +81,20 @@ void game<playerTypeA, playerTypeB>::move()
 {
     if (playerAToMove) {
         auto move = playerA->play(this->grid);
-        grid[get<0>(move)][get<1>(move)] = 'X';
+        grid[get<0>(move)][get<1>(move)] = mark;
     }
     else {
         auto move = playerB->play(this->grid);
-        grid[get<0>(move)][get<1>(move)] = 'O';
+        grid[get<0>(move)][get<1>(move)] = mark;
     }
 
     // switch turns
     playerAToMove = !playerAToMove;
+    if (mark == 'X') {
+        mark = 'O';
+    } else {
+        mark = 'X';
+    }
 }
 
 template <class playerTypeA, class playerTypeB>
@@ -110,11 +119,23 @@ int game<playerTypeA, playerTypeB>::isOver()
     // 2 --> player B won
     int winner = 0;
 
-    char mark[2] = {'X', 'O'};
+    char marks[2];
     int i,j;
 
+    // Correctly set marks array
+    if (( playerAToMove && mark == 'X') ||
+        (!playerAToMove && mark == 'O')   )
+    {
+        marks[0] = 'X';
+        marks[1] = 'O';
+    } else {
+        marks[0] = 'O';
+        marks[1] = 'X';
+    }
+
+
     for (i = 0; i < 2; i++) {
-        char m = mark[i];
+        char m = marks[i];
         if ((grid[0][0] == m && grid[0][1] == m && grid[0][2] == m) ||
             (grid[1][0] == m && grid[1][1] == m && grid[1][2] == m) ||
             (grid[2][0] == m && grid[2][1] == m && grid[2][2] == m) ||
@@ -122,7 +143,7 @@ int game<playerTypeA, playerTypeB>::isOver()
             (grid[0][1] == m && grid[1][1] == m && grid[2][1] == m) ||
             (grid[0][2] == m && grid[1][2] == m && grid[2][2] == m) ||
             (grid[0][0] == m && grid[1][1] == m && grid[2][2] == m) ||
-            (grid[0][2] == m && grid[1][1] == m && grid[2][0] == m))
+            (grid[0][2] == m && grid[1][1] == m && grid[2][0] == m)   )
             winner = i + 1;
     }
 

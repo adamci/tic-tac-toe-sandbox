@@ -5,6 +5,7 @@
 
 
 #include "humanPlayer.hpp"
+using namespace std;
 
 
 tuple<int,int> humanPlayer::play(char grid[3][3])
