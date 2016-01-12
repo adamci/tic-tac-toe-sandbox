@@ -1,5 +1,5 @@
-CC=g++
-CFLAGS=-c -Wall
+CC=c++
+CFLAGS=-c -Wall -std=c++11
 SOURCES=main.cpp randomPlayer.cpp humanPlayer.cpp player.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=ttt

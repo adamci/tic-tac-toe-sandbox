@@ -6,16 +6,15 @@
 
 #include "randomPlayer.hpp"
 
-void randomPlayer::play(int *i, int *j, char grid[3][3])
+tuple<int,int> randomPlayer::play(char grid[3][3])
 {
-	int i_temp, j_temp, xRan;
+	int i, j, xRan;
 
 	do {
 		xRan = rand() % 9;
-		i_temp = xRan / 3;
-		j_temp = xRan % 3;
-	} while (!validMove(i_temp, j_temp, grid));
+		i = xRan / 3;
+		j = xRan % 3;
+	} while (!validMove(i, j, grid));
 
-	*i = i_temp;
-	*j = j_temp;
+	return make_tuple(i, j);
 }

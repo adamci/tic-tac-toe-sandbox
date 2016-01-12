@@ -5,8 +5,8 @@
 
 #include "player.hpp"
 #include <iostream>
+#include <tuple>
 using namespace std;
-
 
 
 // ======================================== //
@@ -15,5 +15,5 @@ using namespace std;
 class humanPlayer : public player
 {
 public:
-	void play(int *i, int *j, char grid[3][3]);
+	std::tuple<int,int> play(char grid[3][3]);
 };

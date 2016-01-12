@@ -7,12 +7,10 @@
 #include "humanPlayer.hpp"
 
 
-
-
-void humanPlayer::play(int *i, int *j, char grid[3][3])
+tuple<int,int> humanPlayer::play(char grid[3][3])
 {
 	string move;
-	int i_temp, j_temp;
+	int i, j;
 
     while (true)
     {
@@ -27,19 +25,17 @@ void humanPlayer::play(int *i, int *j, char grid[3][3])
 			'1' <= move[1]      &&
 			move[1] <= '3'        )
 		{
-			j_temp = move[0] - 'a';
-			i_temp = move[1] - '1';
+			j = move[0] - 'a';
+			i = move[1] - '1';
 
-			if (validMove(i_temp, j_temp, grid))
-			{
-				*i = i_temp;
-				*j = j_temp;
+			if (validMove(i, j, grid))
 				break;
-			}
 			else
 				cerr << "Invalid move\n";
 		}
 		else
 			cerr << "Invalid syntax\n";
     }
+
+    return make_tuple(i, j);
 }

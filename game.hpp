@@ -4,7 +4,6 @@
 //
 
 
-
 #include <ctime>
 #include <cstdlib>
 #include <string>
@@ -26,7 +25,7 @@ private:
     playerTypeA *playerA;
     playerTypeB *playerB;
     bool playerAToMove;
-    // friend bool player::validMove(int i, int j);
+
     friend class player;
     friend class humanPlayer;
     friend class randomPlayer;
@@ -76,15 +75,13 @@ void game<playerTypeA, playerTypeB>::reset()
 template <class playerTypeA, class playerTypeB>
 void game<playerTypeA, playerTypeB>::move()
 {
-    int i, j;
-
     if (playerAToMove) {
-        playerA->play(&i, &j, this->grid);
-        grid[i][j] = 'X';
+        auto move = playerA->play(this->grid);
+        grid[get<0>(move)][get<1>(move)] = 'X';
     }
     else {
-        playerB->play(&i, &j, this->grid);
-        grid[i][j] = 'O';
+        auto move = playerB->play(this->grid);
+        grid[get<0>(move)][get<1>(move)] = 'O';
     }
 
     // switch turns
