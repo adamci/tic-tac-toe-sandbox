@@ -13,3 +13,25 @@ another:
 In addition to being a first foray into reinforcement learning, this
 project also aims to serve as empirical proof that the quality of
 reinforcement learning is a function of the quality of the teacher.
+
+minimaxPlayer
+-------------
+Depth 10
+	Rando won 0 times.
+	Minimax won 91 times.
+	There were 9 ties.
+
+Depth 6
+	Rando won 0 times.
+	Minimax won 88 times.
+	There were 12 ties.
+
+Depth 2
+	Rando won 7 times.
+	Minimax won 78 times.
+	There were 15 ties.
+
+Depth 1
+	Rando won 27 times.
+	Minimax won 71 times.
+	There were 2 ties.

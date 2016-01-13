@@ -53,7 +53,6 @@ public:
         mark = 'X';
     }
 
-
     void reset();
     void move();
     void print();
@@ -172,6 +171,7 @@ int game<playerTypeA, playerTypeB>::isOver()
 
     return winner;
 }
+
 
 template <class playerTypeA, class playerTypeB>
 void game<playerTypeA, playerTypeB>::test()

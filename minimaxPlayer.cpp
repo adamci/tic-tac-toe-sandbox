@@ -6,21 +6,24 @@
 #include "minimaxPlayer.hpp"
 using namespace std;
 
+// Note that DEPTH must be set to a positive value
+#define DEPTH 2
+
+
+
 pair<int,int> minimaxPlayer::play(char grid[3][3], char turn)
 {
-	auto ret = minimax(grid, turn);
+	auto ret = minimax(grid, turn, DEPTH);
 
     if (ret.second.first == -1)
-    	cout << "WOAH\n";
+    	cout << "minimaxPlayer::play: DEPTH must be set to a positive value\n";
 
 	return ret.second;
 }
 
-void print(char grid[3][3]);
-void print_move_vec(vector<pair<int,int>> vec);
-void print_score_vec(vector<int> vec);
 
-pair<int, pair<int,int>> minimaxPlayer::minimax(char grid[3][3], char turn)
+
+pair<int, pair<int,int>> minimaxPlayer::minimax(char grid[3][3], char turn, int depth)
 {
 	int score;
 	int i, j;
@@ -31,8 +34,8 @@ pair<int, pair<int,int>> minimaxPlayer::minimax(char grid[3][3], char turn)
 
 	// Base case: return if tie or score is non-zero
 	score = eval(grid);
-	if (score != 0 || tie(grid)) {
-		return make_pair(score, make_pair(-1,-1));  // TODO: fix this
+	if (score != 0 || tie(grid) || depth == 0) {
+		return make_pair(score, make_pair(-1,-1));
 	}
 
 	// Set next_turn
@@ -53,7 +56,7 @@ pair<int, pair<int,int>> minimaxPlayer::minimax(char grid[3][3], char turn)
 			grid[i][j] = turn;
 
 			// Get score for this possible move
-			auto ret = minimax(grid, next_turn);
+			auto ret = minimax(grid, next_turn, depth-1);
 			score = ret.first;
 
 			// Push move and its corresponding score
@@ -66,7 +69,6 @@ pair<int, pair<int,int>> minimaxPlayer::minimax(char grid[3][3], char turn)
 	}
 
 	// Maximize for X
-	// cout << turn << endl << best_index << endl;
 	if (turn == 'X') {
 		best_value = -10;
 
@@ -90,16 +92,6 @@ pair<int, pair<int,int>> minimaxPlayer::minimax(char grid[3][3], char turn)
 		}
 	}
 
-	// print_move_vec(move_vec);
-	// print_score_vec(score_vec);
-	// cout << best_value << endl << best_index << endl << endl << endl;
-
-	// Return values from best_index
-	// print(grid);
-	// cout << turn << " -- ";
-	// cout << "(" << score_vec[best_index] << ", ";
-	// cout << "(" << move_vec[best_index].first << ", ";
-	// cout << move_vec[best_index].second << "))\n";
 	return make_pair(score_vec[best_index], move_vec[best_index]);
 }
 
@@ -133,6 +125,8 @@ int minimaxPlayer::eval(char grid[3][3])
     return 0;
 }
 
+
+
 bool minimaxPlayer::tie(char grid[3][3])
 {
 	int i, j;
@@ -146,40 +140,4 @@ bool minimaxPlayer::tie(char grid[3][3])
 	}
 
 	return tie;
-}
-
-void print(char grid[3][3])
-{
-    cout << endl;
-    cout << "  a b c\n";
-    cout <<"1 " << grid[0][0] << "|" << grid[0][1] << "|" << grid[0][2] << endl;
-    cout << "-------\n";
-    cout <<"2 " << grid[1][0] << "|" << grid[1][1] << "|" << grid[1][2] << endl;
-    cout << "-------\n";
-    cout <<"3 " << grid[2][0] << "|" << grid[2][1] << "|" << grid[2][2] << endl;
-    cout << endl;
-}
-
-void print_move_vec(vector<pair<int,int>> vec)
-{
-	int i;
-
-	cout << "{";
-	for (i = 0; i < vec.size(); i++) {
-		auto move = vec[i];
-		cout << "(" << move.first << ", " << move.second << "), ";
-	 }
-	 cout << "}" << endl;
-}
-
-void print_score_vec(vector<int> vec)
-{
-	int i;
-
-	cout << "{";
-	for (i = 0; i < vec.size(); i++) {
-		auto score = vec[i];
-		cout << score << ", ";
-	 }
-	 cout << "}" << endl;
 }
