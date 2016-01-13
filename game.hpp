@@ -10,6 +10,7 @@
 #include <iostream>
 #include "humanPlayer.hpp"
 #include "randomPlayer.hpp"
+#include "minimaxPlayer.hpp"
 
 using namespace std;
 
@@ -30,6 +31,9 @@ private:
     friend class player;
     friend class humanPlayer;
     friend class randomPlayer;
+    friend class minimaxPlayer;
+
+    void print(char g[3][3]);
 
 public:
     game(playerTypeA *pA, playerTypeB *pB) : playerA(pA), playerB(pB)
@@ -54,6 +58,7 @@ public:
     void move();
     void print();
     int isOver();
+    void test();
 };
 
 
@@ -61,6 +66,19 @@ public:
 // ======================================== //
 //              Game methods                //
 // ======================================== //
+template <class playerTypeA, class playerTypeB>
+void game<playerTypeA, playerTypeB>::print(char g[3][3])
+{
+    cout << endl;
+    cout << "  a b c\n";
+    cout <<"1 " << g[0][0] << "|" << g[0][1] << "|" << g[0][2] << endl;
+    cout << "-------\n";
+    cout <<"2 " << g[1][0] << "|" << g[1][1] << "|" << g[1][2] << endl;
+    cout << "-------\n";
+    cout <<"3 " << g[2][0] << "|" << g[2][1] << "|" << g[2][2] << endl;
+    cout << endl;
+}
+
 template <class playerTypeA, class playerTypeB>
 void game<playerTypeA, playerTypeB>::reset()
 {
@@ -101,14 +119,7 @@ void game<playerTypeA, playerTypeB>::move()
 template <class playerTypeA, class playerTypeB>
 void game<playerTypeA, playerTypeB>::print()
 {
-    cout << endl;
-    cout << "  a b c\n";
-    cout <<"1 " << grid[0][0] << "|" << grid[0][1] << "|" << grid[0][2] << endl;
-    cout << "-------\n";
-    cout <<"2 " << grid[1][0] << "|" << grid[1][1] << "|" << grid[1][2] << endl;
-    cout << "-------\n";
-    cout <<"3 " << grid[2][0] << "|" << grid[2][1] << "|" << grid[2][2] << endl;
-    cout << endl;
+    print(grid);
 }
 
 template <class playerTypeA, class playerTypeB>
@@ -160,4 +171,22 @@ int game<playerTypeA, playerTypeB>::isOver()
     }
 
     return winner;
+}
+
+template <class playerTypeA, class playerTypeB>
+void game<playerTypeA, playerTypeB>::test()
+{
+    char test_grid[3][3] = { {' ', 'X', ' '},
+                             {' ', ' ', 'X'},
+                             {'O', 'O', 'X'}  };
+
+
+    cout << "Test run of single move:\n";
+    print(test_grid);
+
+    auto move = playerA->play(test_grid, 'O');
+    cout << move.first << " " << move.second << endl;
+    test_grid[move.first][move.second] = 'O';
+
+    print(test_grid);
 }
