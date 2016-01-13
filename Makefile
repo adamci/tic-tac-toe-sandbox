@@ -6,7 +6,8 @@ SOURCES=main.cpp \
         randomPlayer.cpp \
         humanPlayer.cpp \
         minimaxPlayer.cpp \
-        player.cpp
+        player.cpp \
+        debug.cpp
 
 all: $(SOURCES) $(EXECUTABLE)
 
