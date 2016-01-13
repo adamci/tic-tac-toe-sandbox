@@ -49,6 +49,7 @@ public:
         mark = 'X';
     }
 
+
     void reset();
     void move();
     void print();
@@ -80,12 +81,12 @@ template <class playerTypeA, class playerTypeB>
 void game<playerTypeA, playerTypeB>::move()
 {
     if (playerAToMove) {
-        auto move = playerA->play(this->grid);
-        grid[get<0>(move)][get<1>(move)] = mark;
+        auto move = playerA->play(grid, mark);
+        grid[move.first][move.second] = mark;
     }
     else {
-        auto move = playerB->play(this->grid);
-        grid[get<0>(move)][get<1>(move)] = mark;
+        auto move = playerB->play(grid, mark);
+        grid[move.first][move.second] = mark;
     }
 
     // switch turns

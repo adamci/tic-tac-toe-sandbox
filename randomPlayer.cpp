@@ -8,7 +8,7 @@
 using namespace std;
 
 
-tuple<int,int> randomPlayer::play(char grid[3][3])
+pair<int,int> randomPlayer::play(char grid[3][3], char turn)
 {
 	int i, j, xRan;
 
@@ -18,5 +18,5 @@ tuple<int,int> randomPlayer::play(char grid[3][3])
 		j = xRan % 3;
 	} while (!validMove(i, j, grid));
 
-	return make_tuple(i, j);
+	return make_pair(i, j);
 }

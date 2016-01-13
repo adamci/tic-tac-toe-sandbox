@@ -8,7 +8,7 @@
 using namespace std;
 
 
-tuple<int,int> humanPlayer::play(char grid[3][3])
+pair<int,int> humanPlayer::play(char grid[3][3], char turn)
 {
 	string move;
 	int i, j;
@@ -38,5 +38,5 @@ tuple<int,int> humanPlayer::play(char grid[3][3])
 			cerr << "Invalid syntax\n";
     }
 
-    return make_tuple(i, j);
+    return make_pair(i, j);
 }

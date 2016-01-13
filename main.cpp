@@ -17,8 +17,8 @@ void randRandThousandTrialTest();
 
 int main()
 {
-	randRandThousandTrialTest();
-	//humanVersusRandom();
+	//randRandThousandTrialTest();
+	humanVersusRandom();
 
 	return 1;
 }
