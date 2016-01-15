@@ -7,9 +7,9 @@
 
 
 // player methods
-bool player::validMove(int i, int j, char grid[3][3])
+bool player::validMove(int i, std::vector<char> board)
 {
-	if (grid[i][j] == ' ')
+	if (board[i] == ' ')
 		return true;
 	else
 		return false;

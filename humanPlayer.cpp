@@ -8,10 +8,11 @@
 using namespace std;
 
 
-pair<int,int> humanPlayer::play(char grid[3][3], char turn)
+int humanPlayer::play(vector<char> board, char turn)
 {
 	string move;
 	int i, j;
+	int int_move;
 
     while (true)
     {
@@ -28,8 +29,9 @@ pair<int,int> humanPlayer::play(char grid[3][3], char turn)
 		{
 			j = move[0] - 'a';
 			i = move[1] - '1';
+			int_move = 3*i + j;
 
-			if (validMove(i, j, grid))
+			if (validMove(int_move, board))
 				break;
 			else
 				cerr << "Invalid move\n";
@@ -38,5 +40,5 @@ pair<int,int> humanPlayer::play(char grid[3][3], char turn)
 			cerr << "Invalid syntax\n";
     }
 
-    return make_pair(i, j);
+    return int_move;
 }

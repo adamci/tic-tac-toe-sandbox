@@ -3,6 +3,8 @@
 //
 //
 
+#include <iostream>
+#include <vector>
+
 void print(char grid[3][3]);
-void print_move_vec(vector<pair<int,int>> vec);
-void print_score_vec(vector<int> vec);
+void print_int_vec(std::vector<int> vec);

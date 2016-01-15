@@ -22,10 +22,10 @@ void testPlayer();
 int main()
 {
 	//randRandTrialTest();
-	//randMinimaxTrialTest();
+	randMinimaxTrialTest();
 	//humanVersusRandom();
 	//humanVersusMinimax();
-	testPlayer();
+	//testPlayer();
 	//minimaxMinimaxTrialTest();
 
 	return 1;

@@ -8,15 +8,17 @@
 using namespace std;
 
 
-pair<int,int> randomPlayer::play(char grid[3][3], char turn)
+int randomPlayer::play(vector<char> board, char turn)
 {
 	int i, j, xRan;
+	int int_move;
 
 	do {
 		xRan = rand() % 9;
 		i = xRan / 3;
 		j = xRan % 3;
-	} while (!validMove(i, j, grid));
+		int_move = 3*i + j;
+	} while (!validMove(int_move, board));
 
-	return make_pair(i, j);
+	return int_move;
 }

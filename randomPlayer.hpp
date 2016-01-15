@@ -7,6 +7,7 @@
 #include "player.hpp"
 #include <iostream>
 #include <utility>
+#include <vector>
 
 // ======================================== //
 //      Random player class definition      //
@@ -14,5 +15,5 @@
 class randomPlayer : public player
 {
 public:
-	std::pair<int,int> play(char grid[3][3], char turn);
+	int play(std::vector<char> board, char turn);
 };
