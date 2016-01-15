@@ -7,8 +7,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <string>
-#include <iostream>
-#include <vector>
+#include "include.h"
 #include "humanPlayer.hpp"
 #include "randomPlayer.hpp"
 #include "minimaxPlayer.hpp"

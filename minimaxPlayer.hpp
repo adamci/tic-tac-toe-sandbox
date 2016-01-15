@@ -5,9 +5,7 @@
 
 
 #include "player.hpp"
-#include <iostream>
-#include <utility>
-#include <vector>
+#include "include.h"
 
 // Note that DEPTH must be set to a positive value
 #define DEPTH 2

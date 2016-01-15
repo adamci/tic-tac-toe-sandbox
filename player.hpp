@@ -2,8 +2,7 @@
 //	player.hpp
 //
 //
-#define BOARD_SIZE 9
-#include <vector>
+#include "include.h"
 
 
 #ifndef _PLAYER_H

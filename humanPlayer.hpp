@@ -4,9 +4,7 @@
 //
 
 #include "player.hpp"
-#include <iostream>
-#include <utility>
-#include <vector>
+#include "include.h"
 
 
 // ======================================== //
