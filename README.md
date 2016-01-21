@@ -16,6 +16,11 @@ reinforcement learning is a function of the quality of the teacher.
 
 minimaxPlayer
 -------------
+The following results from 100-game trial runs between the random and
+minimax players illustrate how performance varies with the depth of the
+tree search in the minimax algorithm.
+
+
 #####Depth 10
 ```
 Rando won 0 times.
