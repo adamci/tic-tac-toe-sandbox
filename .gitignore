@@ -1,2 +1,8 @@
-*.o
-ttt
+# Ignore object files
+build
+
+# Ignore any executables
+bin/*
+
+# Ignore Mac specific files
+.DS_Store
