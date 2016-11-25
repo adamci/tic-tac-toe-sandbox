@@ -2,7 +2,7 @@
 //	player.hpp
 //
 //
-#include "include.h"
+#include "../include.h"
 
 
 #ifndef _PLAYER_H
