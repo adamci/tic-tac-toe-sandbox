@@ -5,7 +5,7 @@
 
 
 #include "player.hpp"
-#include "include.h"
+#include "../include.h"
 
 // Note that DEPTH must be set to a positive value
 #define DEPTH 2

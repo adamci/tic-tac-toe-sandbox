@@ -1,24 +1,23 @@
-CC=c++
-CFLAGS=-c -Wall -std=c++11 -g
-OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=ttt
-SOURCES=main.cpp \
-        randomPlayer.cpp \
-        humanPlayer.cpp \
-        minimaxPlayer.cpp \
-        player.cpp \
-        debug.cpp
+CC := g++
+SRCDIR := src
+BUILDDIR := build
+TARGET := bin/ttt
 
-all: $(SOURCES) $(EXECUTABLE)
+SRCEXT := cpp
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS := -g -Wall -std=c++11
 
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."
+	@echo " $(CC) $^ -o $(TARGET)"; $(CC) $^ -o $(TARGET)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
-
-
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
-
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(dir $@)
+	@echo " $(CC) $(CFLAGS) -c -o $@ $<"; $(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm *.o ttt
+	@echo " Cleaning..."
+	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
+
+.PHONY: clean

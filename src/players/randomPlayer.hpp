@@ -5,7 +5,7 @@
 
 
 #include "player.hpp"
-#include "include.h"
+#include "../include.h"
 
 // ======================================== //
 //      Random player class definition      //

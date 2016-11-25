@@ -6,9 +6,9 @@
 
 #include <ctime>
 #include "include.h"
-#include "humanPlayer.hpp"
-#include "randomPlayer.hpp"
-#include "minimaxPlayer.hpp"
+#include "players/humanPlayer.hpp"
+#include "players/randomPlayer.hpp"
+#include "players/minimaxPlayer.hpp"
 
 using namespace std;
 
